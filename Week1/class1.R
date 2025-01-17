@@ -17,3 +17,13 @@ names(census2020)
 
 census2020<-rename(census2020, whitehhs=nhwt20)
 names(census2020)
+
+census_select <- census2020 %>%
+  select(pop20,whitehhs, nhblk20,hisp20,asian20)
+
+# Alternative
+census_select<- census2020 %>%
+  select(pop20, -ntv20)
+
+
+# 
