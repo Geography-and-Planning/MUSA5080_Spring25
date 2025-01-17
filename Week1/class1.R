@@ -25,5 +25,12 @@ census_select <- census2020 %>%
 census_select<- census2020 %>%
   select(pop20, -ntv20)
 
+census_select<- census2020 %>%
+  mutate(pwhitehh=whitehhs/pop20,
+         pnhblk=nhblk20/pop20,
+         phisp=hisp20/pop20,
+         pasian=asian20/pop20)
 
-# 
+census_select<-census_select %>%
+  mutate(mwhite= case_when(pwhitehh>0.5~"Majority",
+                           TRUE~"not majority"))
