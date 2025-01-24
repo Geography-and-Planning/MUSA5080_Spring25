@@ -72,3 +72,9 @@ census2020_groupby<-census2020 %>%
 #official solution
 #summary_table<-census%>% mutate(stateID=substr(TRTID2010,1,2))%>% 
 #  group_by(stateID)%>% summarize(mean_pop=mean(pop20,na.rm=TRUE))
+
+
+census_PAsumm<-census_PA %>%
+  group_by(mwhite)%>%
+  summarize(n=n())%>%
+  mutate(freq=n/sum(n))
