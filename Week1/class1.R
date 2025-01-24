@@ -35,6 +35,10 @@ census_select<-census_select %>%
   mutate(mwhite= case_when(pwhitehh>0.5~"Majority",
                            TRUE~"not majority"))
 
+census2020<-census_select %>%
+  select(TRTID2010,pwhitehh,mwhite)
+
 census_2000<-read.csv("LTDB_Std_2000_fullcount.csv")
 
 census_joined<- left_join(census2020, census_2000, by=c("TRTID2010"="TRTID10"))
+
