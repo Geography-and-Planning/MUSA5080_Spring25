@@ -78,3 +78,5 @@ census_PAsumm<-census_PA %>%
   group_by(mwhite)%>%
   summarize(n=n())%>%
   mutate(freq=n/sum(n))
+
+# Double or multiple group by see my FARS processing code
