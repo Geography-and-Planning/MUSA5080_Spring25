@@ -57,7 +57,14 @@ census_PA_joined<-census_PA_joined %>%
 census2020 <- read.csv("LTDB_Std_2020_fullcount.csv")
 
 # mean<- census_2020 %>% summarize(mean=mean(pop20,na.rm=TRUE))
+summary(census_2020$pop20)
 
 mean<- census_2020%>%
   filter(!is.na(pop20)) %>%
   summarize(mean=mean(pop20))
+
+census2020$state<-census2020$TRTID2010 %>% substr(1,2)
+
+census2020_groupby<-census2020 %>%
+  group_by(state) %>%
+  summarize(mean_pop=mean(pop20,na.rm=TRUE))
